@@ -1,0 +1,47 @@
+[tool.poetry]
+name = "test-reactpy"
+version = "0.1.0"
+description = ""
+authors = ["Jinserk Baik <823222+jinserk@users.noreply.github.com>"]
+readme = "README.md"
+packages = [
+    { include = "trp/**/*.py", from = "src" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.101.1"
+uvicorn = {version="^0.23.2", extras=['standard']}
+pydantic-settings = "^2.0.3"
+typer = "^0.9.0"
+tabulate = "^0.9.0"
+loguru = "^0.7.0"
+reactpy = "^1.0.2"
+
+[tool.poetry.group.dev]
+optional = true
+
+[tool.poetry.group.dev.dependencies]
+asgi-lifespan = "^2.0.0"
+black = { version = "^23.1.0" }
+coverage = { version = "^7.2.1", extras = ['toml'] }
+#gevent = "^22.10.2"
+httpx = "^0.23.3"
+ipython = "^8.11.0"
+pre-commit = "^3.1.1"
+pytest = "^7.2.2"
+pytest-cov = "^4.0.0"
+pytest-asyncio = "^0.20.3"
+pytest-mock = "^3.10.0"
+pytest-fastapi-deps = "^0.2.3"
+
+[tool.poetry.scripts]
+trp = "trp.cli:app"
+
+[tool.poetry_bumpversion.file."src/trp/__init__.py"]
+search = '__version__ = "{current_version}"'
+replace = '__version__ = "{new_version}"'
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
